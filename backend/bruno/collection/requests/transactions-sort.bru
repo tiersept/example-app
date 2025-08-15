@@ -1,0 +1,11 @@
+meta {
+  name: Sort Transactions
+}
+
+get {
+  url: {{baseUrl}}/transactions?sort=amount&order=desc
+}
+
+headers {
+  Authorization: Bearer {{authToken}}
+}

@@ -1,0 +1,5 @@
+apis:
+  banking@v1:
+    root: http://localhost:3001/api-docs/swagger.json
+    x-openapi-ts:
+      output: ./lib/types/schema.ts

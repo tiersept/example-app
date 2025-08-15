@@ -1,0 +1,23 @@
+meta {
+  name: Login
+}
+
+post {
+  url: {{baseUrl}}/login
+}
+
+body {
+  {
+    "username": "test@test.test",
+    "password": "password@123"
+  }
+}
+
+headers {
+  content-type: application/json
+}
+
+script:post-response {
+  bru.setVar("authToken", res.body.token);
+  bru.setVar("refreshToken", res.body.refreshToken);
+}

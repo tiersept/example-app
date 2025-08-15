@@ -1,0 +1,20 @@
+{
+  "name": "abn-assignment",
+  "private": true,
+  "engines": {
+    "node": "22.13.1"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev:mobile": "cd frontend && npm start",
+    "dev:api": "cd backend && npm run dev",
+    "test": "npm run test --workspaces",
+    "generate-types": "npx openapi-typescript"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^7.9.1"
+  }
+}
