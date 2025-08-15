@@ -1,6 +1,7 @@
 import { $api } from "@/lib/client";
 import { useState } from "react";
-import { FlatList, RefreshControl, View } from "react-native";
+import { FlatList, Platform, RefreshControl, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { TransactionItem } from "../../../lib/types";
 import { ListTransactionItem } from "../list-transactions-item";
 import { useBottomTabOverflow } from "../tab-background-color";
@@ -9,6 +10,7 @@ import { ThemedText } from "../themed-text";
 //TODO: Filter by params
 export const ListTransactions = ({ id }: { id: number }) => {
   const [refreshing, setRefreshing] = useState(false);
+  const insets = useSafeAreaInsets();
 
   const {
     data,
@@ -85,14 +87,18 @@ export const ListTransactions = ({ id }: { id: number }) => {
       </View>
     );
   }
-
   return (
     <FlatList
       contentInsetAdjustmentBehavior="automatic"
       scrollEventThrottle={16}
       scrollIndicatorInsets={{ bottom }}
       contentInset={{ bottom }}
-      contentContainerStyle={{ paddingHorizontal: 12 }}
+      // We shouldnt have to add padding manually in combination with headerLargeTitle. For the sake of this demo...
+      // Known bug https://github.com/software-mansion/react-native-screens/issues/2801#event-17296347519
+      contentContainerStyle={{
+        paddingHorizontal: 12,
+        paddingTop: Platform.OS === "android" ? insets.top * 2.8 : 0,
+      }}
       data={allTransactions}
       renderItem={renderItem}
       keyExtractor={(item) =>

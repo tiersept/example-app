@@ -81,7 +81,7 @@ export default function Index() {
           headerShown: true,
           headerTransparent: true,
           headerBlurEffect: "systemUltraThinMaterial",
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+           
           // @ts-ignore
           headerLargeStyle: Platform.select({
             ios: {
@@ -120,7 +120,7 @@ export default function Index() {
           <View style={styles.emptyContainer}>
             <ThemedText style={styles.emptyText}>No accounts found</ThemedText>
             <ThemedText style={styles.emptySubtext}>
-              Your accounts will appear here once they're set up
+              Your accounts will appear here once set up
             </ThemedText>
           </View>
         ) : (

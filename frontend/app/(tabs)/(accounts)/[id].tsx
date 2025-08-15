@@ -15,7 +15,7 @@ const DetailScreenAccount = () => {
           headerShown: true,
           headerTransparent: true,
           headerBlurEffect: "systemUltraThinMaterial",
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
           // @ts-ignore
           headerLargeStyle: Platform.select({
             ios: {
