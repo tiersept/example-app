@@ -1,3 +1,4 @@
+import { getBaseApiUrl } from "@/util/get-base-api-url";
 import { paths } from "../../../lib/types/schema";
 
 type params =
@@ -6,11 +7,13 @@ type params =
 type response =
   paths["/refresh-token"]["post"]["responses"]["200"]["content"]["application/json"];
 
+const baseApiUrl = getBaseApiUrl();
+
 export const postRefreshToken = async (
   refreshToken: params["refreshToken"]
 ): Promise<{ data?: response; error?: any }> => {
   try {
-    const response = await fetch("http://localhost:3001/refresh-token", {
+    const response = await fetch(`${baseApiUrl}/refresh-token`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

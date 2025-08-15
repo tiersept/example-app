@@ -2,9 +2,9 @@ import {
   AUTH_REFRESH_TOKEN_KEY,
   AUTH_TOKEN_KEY,
 } from "@/constants/secure-store";
+import { getBaseApiUrl } from "@/util/get-base-api-url";
 import * as SecureStore from "expo-secure-store";
 import createFetchClient, { type Middleware } from "openapi-fetch";
-import { Platform } from "react-native";
 import { paths } from "../../../lib/types/schema";
 import { postRefreshToken } from "../api/post-refresh-token";
 
@@ -89,21 +89,8 @@ const authMiddleware: Middleware = {
   },
 };
 
-const getBaseUrl = () => {
-  if (__DEV__) {
-    // Development URLs
-    if (Platform.OS === "android") {
-      return "http://10.0.2.2:3001";
-    } else if (Platform.OS === "ios") {
-      return "http://localhost:3001";
-    }
-  }
-
-  return "https://your-production-api.com";
-};
-
 const fetchClient = createFetchClient<paths>({
-  baseUrl: getBaseUrl(),
+  baseUrl: getBaseApiUrl(),
 });
 
 fetchClient.use(authMiddleware);

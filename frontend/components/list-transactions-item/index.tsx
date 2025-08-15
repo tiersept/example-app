@@ -1,6 +1,6 @@
 import { useCurrencyFormat } from "@/hooks/useCurrencyFormat";
 import { useThemeColor } from "@/hooks/useThemeColor";
-import { formatDate } from "@/util/formatData";
+import { formatDate } from "@/util/format-date";
 import { StyleSheet, View } from "react-native";
 import { TransactionItem } from "../../../lib/types";
 import { ThemedText } from "../themed-text";
