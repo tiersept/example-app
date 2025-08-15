@@ -48,7 +48,7 @@ npm run generate-types
 ```
 
 ## Backend
-
+- http://localhost:3001/api-docs/ for swagger docs
 - Setup up Bruno for easy api debugging, documentation and interaction
 - 'Monorepo' setup
 - Backend definition and documentation to OpenApi spec
